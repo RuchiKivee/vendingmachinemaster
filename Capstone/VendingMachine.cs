@@ -17,6 +17,9 @@
         public string NotEnoughMoneyError = "Not enough money in the machine to complete the transaction.";
         public string MessageToUser;
 
+
+        private VendingMachine v;
+
         public VendingMachine()
         {
             this.VendingMachineItems = this.HandleFiles.GetVendingItems();
@@ -65,6 +68,7 @@
             return this.VendingMachineItems.ContainsKey(itemNumber);
         }
 
+       
         public bool RetreiveItem(string itemNumber)
         {
                 // If the item exists (not Q1 or something like that)
@@ -72,6 +76,7 @@
                 // and we have more money in the machine than the price
                 if (this.ItemExists(itemNumber)
                     && this.Money.MoneyInMachine >= this.VendingMachineItems[itemNumber].Price
+                   
                     && this.VendingMachineItems[itemNumber].ItemsRemaining > 0
                     && this.VendingMachineItems[itemNumber].RemoveItem())
                 {
@@ -83,6 +88,8 @@
 
                     // Remove the money
                     this.Money.RemoveMoney(this.VendingMachineItems[itemNumber].Price);
+
+              
 
                     // Logging after: current money in machine
                     decimal after = this.Money.MoneyInMachine;
@@ -97,25 +104,27 @@
                     return false;
                 }
         }
-        public void totalamount()
-        {
-            try
-            {
-                decimal mult, price, itemsRemaining;
-                Console.WriteLine("Enter Value of price and itemsRemaining\n");
-                price = Convert.ToDecimal(Console.ReadLine());
-                itemsRemaining = Convert.ToDecimal(Console.ReadLine());
+        //public void totalamount()
+        //{
+        //    try
+        //    {
+        //        decimal mult,price, itemsRemaining;
 
-                mult = price * itemsRemaining;
-                Console.WriteLine("The Multiplication of {0} and {1} = {2}\n", price, itemsRemaining, mult);
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+
+               
+
+        //        price = Convert.ToDecimal(Console.ReadLine());
+        //        itemsRemaining = Convert.ToDecimal(Console.ReadLine());
+        //        mult = price * itemsRemaining;
+        //        Console.WriteLine("mult={0}\n", mult);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
             
 
-        }
+        //}
 
     }
 }

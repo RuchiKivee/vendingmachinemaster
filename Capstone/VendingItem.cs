@@ -22,14 +22,15 @@
         /// How many of each VendingItem remains
         /// </summary>
         public int ItemsRemaining { get; set; }
-     
 
+       
         /// <summary>
         /// What the menu displays when the VendingItem is vended
         /// </summary>
         public string MessageWhenVended { get; set; }
 
         public string MessageWhenSoldOut { get; set; }
+        public decimal mult { get; set; }
 
         public VendingItem()
         {
@@ -47,11 +48,12 @@
             this.MessageWhenSoldOut = $"Sold out of {this.ProductName}!\nBuy something else!";
         }
 
-        protected VendingItem(string productName, decimal price, int itemsRemaining, string message)
+        protected VendingItem(string productName, decimal price, int itemsRemaining , string message)
         {
             ProductName = productName;
             Price = price;
             ItemsRemaining = itemsRemaining;
+
             this.message = message;
         }
 
